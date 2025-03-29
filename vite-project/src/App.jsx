@@ -136,7 +136,7 @@ function App() {
       <div className='container'>
         <nav className='navbar'>
           <div className='logo-section'>
-            <img className='mgLogo' src="./src/images/tata_1mg_logo.svg" alt="tata_1mg_logo" />
+            <img className='mgLogo' src="images/tata_1mg_logo.svg" alt="tata_1mg_logo" />
             <h3>MEDICINES</h3>
             <h3>LAB TESTS</h3>
             <h3>CONSULT DOCTORS</h3>
@@ -159,7 +159,7 @@ function App() {
         <div className='search-section'>
           <div className='location'>
             <div className='map-icon-containe'>
-              <img className='map-icon' src="./src/images/map-icon.png" alt="map-icon" />
+              <img className='map-icon' src="images/map-icon.png" alt="map-icon" />
             </div>
             <select name="locatio" id="location">
               <option value="">TOP CITIES</option>
@@ -187,7 +187,7 @@ function App() {
             <div className='search-input'>
               <input type="text" placeholder='Search for Medicines and Health Products' className='search' />
               <div className='search-icon-container'>
-                <img className='search-icon' src="./src/images/search-icon.png" alt="search-icon" />  
+                <img className='search-icon' src="images/search-icon.png" alt="search-icon" />  
               </div>
             </div>
           </div>
@@ -389,7 +389,7 @@ function App() {
           <div className='nppa-container'><img src="/nppa.webp" alt="" className='nppa-img' /></div>
         </div>
         <div className='lending-tag'><h2>Tata 1mg: India’s Leading Online Pharmacy & Healthcare Platform</h2></div>
-        <div className='know-more'><img src="./src/images/know-more.avif" alt="" /></div>
+        <div className='know-more'><img src="images/know-more.avif" alt="" /></div>
         <div className='health-concern-tag'><h3>Shop by health concerns</h3></div>
         <main className='product-container'>
           <div>
