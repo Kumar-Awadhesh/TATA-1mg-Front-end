@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios';
 import './App.css'
 
 
@@ -13,6 +14,7 @@ function App() {
   const [showHealthy, setHealthy] = useState(false);
   const [showImmunity, setImmunity] = useState(false);
   const [showIndex, setIndex] = useState(0);
+  const [data, setData] = useState([]);
 
   const images= [
     "/nycil.jpeg",
@@ -128,8 +130,17 @@ function App() {
   }
 
   const prevHandle = () => {
-    setIndex(prevIndex => prevIndex === 0 ? images.length : prevIndex - 1);
+    setIndex(prevIndex => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
   }
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/product/getProduct")
+      .then((res) => {
+        setData(res.data.products)
+        console.log(setData, "Helath Data");
+      })
+      .catch((err => console.err("failed to fetch the data", err)))
+  },[])
 
   return (
     <>
@@ -402,6 +413,20 @@ function App() {
                     ))}
             </div>
           </div>
+          <div className='feature-brand-tag'><h3>Full body health checkups</h3></div>
+          <div>
+            <div className='health-data'>
+                {data
+                .filter((item) => item.category === "health_checkup")
+                .map((item, index) => (
+                  <div className='product-data' key={index}>
+                    <h4>{item.title}</h4>
+                    <p>{`रु${item.price}`}</p>
+                  </div>
+                ))}
+                  
+            </div>
+          </div>
           <div className='feature-brand-tag'><h3>Featured brands</h3></div>
           <div>
             <div>
@@ -421,6 +446,80 @@ function App() {
                         </div>
                       ))}
               </div>
+          </div>
+          <div className='feature-brand-tag'><h3>Pathology Tests | Up to 70% off</h3></div>
+          <div>
+            <div className='health-data'>
+                {data
+                .filter((item) => item.category === "test")
+                .map((item, index) => (
+                  <div className='product-data' key={index}>
+                    <h4>{item.title}</h4>
+                    <p>{`रु${item.price}`}</p>
+                  </div>
+                ))}
+                  
+            </div>
+          </div>
+          <div className='feature-brand-tag'><h3>Super saving deals</h3></div>
+          <div className='saving-deal-container'>
+            <div className='health-data'>
+                {data
+                .filter((item) => item.category === "saving_deal")
+                .map((item, index) => (
+                  <div className='product-deals' key={index}>
+                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <p>{item.title}</p>
+                    <p>{item.description}</p>
+                    <p>{`रु${item.price}`}</p>
+                  </div>
+                ))} 
+            </div>
+          </div>
+          <div className='feature-brand-tag'><h3>Trending now</h3></div>
+          <div className='saving-deal-container'>
+            <div className='health-data'>
+                {data
+                .filter((item) => item.category === "trending")
+                .map((item, index) => (
+                  <div className='product-deals' key={index}>
+                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <p>{item.title}</p>
+                    <p>{item.description}</p>
+                    <p>{`रु${item.price}`}</p>
+                  </div>
+                ))} 
+            </div>
+          </div>
+          <div className='feature-brand-tag'><h3>Skin care products</h3></div>
+          <div className='saving-deal-container'>
+            <div className='health-data'>
+                {data
+                .filter((item) => item.category === "skin_care")
+                .map((item, index) => (
+                  <div className='product-deals' key={index}>
+                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <p>{item.title}</p>
+                    <p>{item.description}</p>
+                    <p>{`रु${item.price}`}</p>
+                  </div>
+                ))} 
+            </div>
+          </div>
+          <div className='feature-brand-tag'><h3>Popular Combo Deals</h3></div>
+          <div className='saving-deal-container'>
+            <div className='health-data'>
+                {data
+                .filter((item) => item.category === "combo_deal")
+                .map((item, index) => (
+                  <div className='product-deals' key={index}>
+                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <p>{item.title}</p>
+                    <p>{item.description}</p>
+                    <p>{`रु${item.price}`}</p>
+                  </div>
+                ))} 
+            </div>
           </div>
         </main>
         <footer className='footer'>

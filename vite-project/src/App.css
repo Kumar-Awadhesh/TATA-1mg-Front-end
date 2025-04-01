@@ -178,9 +178,7 @@
     background-color: whitesmoke;
 }
 
-.product-section>div{
-    background-color: white;
-}
+
 
 .healthy>div:nth-child(2)>h4, .vitamin>div:nth-child(2)>h4{
     border-left: 1px solid lightgray;
@@ -328,6 +326,7 @@
     display: flex;
     margin: auto;
     text-align: center;
+    justify-content: space-between;
     background-color: white;
      
 }
@@ -365,6 +364,61 @@
     margin: auto;
     align-content: end;
     font-weight: 400;
+}
+
+.health-data{
+    width: 82%;
+}
+
+.product-data{
+    width: 19%;
+    height: 65%;
+    align-self: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.product-data:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.product-data>h4{
+    height: 30%;
+    padding: 10px;
+}
+
+.product-data>p{
+    height: 40%;
+    align-content: end;
+}
+
+.saving-deal-container{
+    height: 380px;
+}
+
+.product-deals{
+    width: 19%;
+    height: 380px;
+    align-self: center;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.product-deals:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.product-deals>p{
+    height: 15%;
+    align-content: end;
+}
+
+.product-deals>img{
+    width: 100px;
+    height: 180px;
+    padding-top: 10px;
 }
 
 .footer{
