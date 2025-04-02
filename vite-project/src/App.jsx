@@ -134,7 +134,7 @@ function App() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3000/product/getProduct")
+    axios.get("https://tata-1mg-4rty.onrender.com/product/getProduct")
       .then((res) => {
         setData(res.data.products)
         console.log(setData, "Helath Data");
@@ -468,7 +468,7 @@ function App() {
                 .filter((item) => item.category === "saving_deal")
                 .map((item, index) => (
                   <div className='product-deals' key={index}>
-                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
                     <p>{`रु${item.price}`}</p>
@@ -483,7 +483,7 @@ function App() {
                 .filter((item) => item.category === "trending")
                 .map((item, index) => (
                   <div className='product-deals' key={index}>
-                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
                     <p>{`रु${item.price}`}</p>
@@ -498,7 +498,7 @@ function App() {
                 .filter((item) => item.category === "skin_care")
                 .map((item, index) => (
                   <div className='product-deals' key={index}>
-                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
                     <p>{`रु${item.price}`}</p>
@@ -513,7 +513,7 @@ function App() {
                 .filter((item) => item.category === "combo_deal")
                 .map((item, index) => (
                   <div className='product-deals' key={index}>
-                    <img src={`http://localhost:3000${item.image}`} alt={item.title} />
+                    <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
                     <p>{`रु${item.price}`}</p>
