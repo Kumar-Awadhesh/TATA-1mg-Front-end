@@ -137,7 +137,7 @@ function App() {
     axios.get("https://tata-1mg-4rty.onrender.com/product/getProduct")
       .then((res) => {
         setData(res.data.products)
-        console.log(setData, "Helath Data");
+        
       })
       .catch((err => console.err("failed to fetch the data", err)))
   },[])
@@ -523,7 +523,7 @@ function App() {
           </div>
         </main>
         <footer className='footer'>
-          <div>
+          <div className='footer-info'>
             <h3>Stay Healthy with Tata 1mg: Your Favourite Online Pharmacy and Healthcare Platform</h3>
             <h4>We Bring Care to Health.</h4>
             <p>Tata 1mg is India's leading digital healthcare platform. From doctor consultations on chat to online pharmacy and lab tests at 
@@ -558,6 +558,63 @@ function App() {
                 our values. Our team of highly trained and experienced doctors, phlebotomists and pharmacists looks into each order to give you a 
                 fulfilling experience.
                 Visit our online medical store now, and avail online medicine purchase at a discount. Stay Healthy!</p>
+          </div>
+          <div className='footer-reach'>
+                <div><h2>INDIA’S LARGEST HEALTHCARE PLATFORM</h2></div>
+                <div className='footer-visitor'>
+                  <div>
+                    <h1>260m+</h1>
+                    <p>Visitors</p>
+                  </div>
+                  <div>
+                    <h1>31m+</h1>
+                    <p>Orders Delivered</p>
+                  </div>
+                  <div>
+                    <h1>1800+</h1>
+                    <p>Cities</p>
+                  </div>
+                </div>
+          </div>
+          <div className='get-app'>
+            <div><h3>Get the link to download App</h3></div>
+            <div>
+              <input type="phone" placeholder='Enter Phone Number' className='link-input' />
+              <button className='link-btn'>Send Link</button>
+            </div>       
+          </div>
+          <div className='connect-section'>
+            <div>
+              <table>
+               <h4>Know Us</h4>
+                <li>About Us</li>
+                <li>Contact Us</li>
+                <li>Press Coverage</li>
+                <li>Careers</li>
+                <li>Business Partnership</li>
+                <li>Become a Health Partner</li>
+                <li>Corporate Governance</li>
+              </table>
+              <table>
+               <h4>Our Policies</h4>
+                <li>Privacy Policy</li>
+                <li>Terms and Conditions</li>
+                <li>Editorial Policy</li>
+                <li>Return Policy</li>
+                <li>IP Policy</li>
+                <li>Grievance Redressal Policy</li>
+                <li>Fake Jobs and Fraud Disclaimer</li>
+              </table>
+              <table>
+                <h4>Our Services</h4>
+                <li>Order Medicines</li>
+                <li>Book Lab Tests</li>
+                <li>Consult a Doctor</li>
+                <li>Ayurveda Articles</li>
+                <li>Hindi Articles</li>
+                <li>Care Plan</li>
+              </table>
+            </div>
           </div>
         </footer>
       </div>
