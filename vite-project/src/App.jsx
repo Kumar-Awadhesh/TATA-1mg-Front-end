@@ -614,6 +614,44 @@ function App() {
                 <li>Hindi Articles</li>
                 <li>Care Plan</li>
               </table>
+              <div className='social-link'>
+                <h4>Connect</h4>
+                <p>Social Links</p>
+                <div>
+                  <img src="images/facebook-logo.svg" alt="facebook-logo" />
+                  <img src="images/insta-logo.svg" alt="insta-logo" />
+                  <img src="images/x-logo.svg" alt="x-logo" />
+                  <img src="images/youtube-logo.svg" alt="youtube-logo" />
+                  <img src="images/in-logo.svg" alt="in-logo" />
+                  <img src="images/medium-logo.svg" alt="medium-logo" />
+                </div>
+                <p>Want daily dose of health?</p>
+                <button>SIGN UP</button>
+              </div>
+              <div className='app-link'>
+                <h4>Download App</h4>
+                <div><img src="images/playstore-logo.avif" alt="playstore-logo" /></div>
+                <div><img src="images/app-store-logo.avif" alt="app-store-logo" /></div>
+              </div>
+            </div>
+            <div className='secure-section'>
+              <div>
+                <div><img src="" alt="" /></div>
+                <div>
+                  <h2>Reliable</h2>
+                  <p>All products displayed on Tata 1mg are procured from verified and licensed pharmacies. All labs listed on the platform are accredited</p>
+                </div>
+                <div><img src="" alt="" /></div>
+                <div>
+                  <h2>Secure</h2>
+                  <p>Tata 1mg uses Secure Sockets Layer (SSL) 128-bit encryption and is Payment Card Industry Data Security Standard (PCI DSS) compliant</p>
+                </div>
+                <div><img src="" alt="" /></div>
+                <div>
+                  <h2>Affordable</h2>
+                  <p>Find affordable medicine substitutes, save up to 50% on health products, up to 80% off on lab tests and free doctor consultations.</p>
+                </div>
+              </div>
             </div>
           </div>
         </footer>
