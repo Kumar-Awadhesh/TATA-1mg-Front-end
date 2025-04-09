@@ -636,17 +636,17 @@ function App() {
             </div>
             <div className='secure-section'>
               <div>
-                <div><img src="" alt="" /></div>
+                <div><img src="images/shield-logo.png" alt="shield-icon" /></div>
                 <div>
                   <h2>Reliable</h2>
                   <p>All products displayed on Tata 1mg are procured from verified and licensed pharmacies. All labs listed on the platform are accredited</p>
                 </div>
-                <div><img src="" alt="" /></div>
+                <div><img src="images/lock.png" alt="lock-icon" /></div>
                 <div>
                   <h2>Secure</h2>
                   <p>Tata 1mg uses Secure Sockets Layer (SSL) 128-bit encryption and is Payment Card Industry Data Security Standard (PCI DSS) compliant</p>
                 </div>
-                <div><img src="" alt="" /></div>
+                <div><img src="images/wallet.png" alt="wallet-icon" /></div>
                 <div>
                   <h2>Affordable</h2>
                   <p>Find affordable medicine substitutes, save up to 50% on health products, up to 80% off on lab tests and free doctor consultations.</p>
