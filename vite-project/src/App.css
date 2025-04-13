@@ -35,7 +35,7 @@
 }
 
 .login-section{
-    width: 7%;
+    width: 8%;
     display: flex;
     justify-content: space-between;
     margin-left: 50px;
@@ -43,6 +43,70 @@
     color: rgb(116, 116, 116);
     
 }
+ .login-section>button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+ }
+
+ .login-section>button:hover{
+    cursor: pointer;
+ }
+
+ .overlay{
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    align-content: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+ }
+
+ .signup-container{
+  width: 800px;
+  height: 500px;
+  padding: 20px;
+  margin-top: 5%;
+  border-radius: 7px;
+  text-align: center;
+  background-color: white;
+ }
+
+ .login-container{
+    width: 800px;
+    height: 500px;
+    padding: 20px;
+    margin-top: 5%;
+    border-radius: 7px;
+    text-align: center;
+    background-color: white;
+   }
+
+ .input-section>div>input{
+    width: 350px;
+    height: 30px;
+    text-indent: 0.2cm;
+    border: none;
+    outline: none;
+    margin-top: 50px;
+    border-bottom: 2px solid orangered;
+ }
+
+ .modal-close{
+    position: relative;
+    margin-left: 98%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+ }
+
+ .modal-close:hover{
+    cursor: pointer;
+ }
 
 .cart-section{
     width: 17%;

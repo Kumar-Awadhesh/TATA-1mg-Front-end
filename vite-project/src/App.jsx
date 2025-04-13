@@ -15,6 +15,12 @@ function App() {
   const [showImmunity, setImmunity] = useState(false);
   const [showIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
+  const [login, setLogin] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const images= [
     "/nycil.jpeg",
@@ -52,6 +58,55 @@ function App() {
     {src: "/images/personal-care6.avif"},
     {src: "/images/personal-care7.avif"}
   ]
+
+  useEffect(() => {
+    if(signup || login){
+      document.body.style.overflow = "hidden";
+    }
+    else{
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    }
+  },[signup, login])
+
+  const loginHandler = () => {
+    setLogin(true);
+    setSignup(false);
+  }
+
+  const signupHandler = () => {
+    setSignup(true);
+    setLogin(false);
+  }
+
+  const modalCloseHandler = () => {
+    setSignup(false);
+    setLogin(false);
+    setName("");
+    setMobile("");
+    setEmail("");
+    setPassword("");
+  }
+
+  const registerHandle = () => {
+    const register = {
+      name,
+      mobile,
+      email,
+      password
+    };
+
+    axios.post("https://tata-1mg-4rty.onrender.com/user/registerUser", register)
+    .then((res) => {
+      console.log("User Register Successfully!:", res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
 
   const healthHandleEnter = () => {
     setHealth(true);
@@ -133,6 +188,7 @@ function App() {
     setIndex(prevIndex => prevIndex === 0 ? images.length - 1 : prevIndex - 1);
   }
 
+
   useEffect(() => {
     axios.get("https://tata-1mg-4rty.onrender.com/product/getProduct")
       .then((res) => {
@@ -157,9 +213,39 @@ function App() {
             <h3>CARE PLAN</h3>
           </div>
           <div className='login-section'>
-            <h4>Login</h4>
+            <button onClick={loginHandler}>Login</button>
             <p>|</p>
-            <h4>Sign Up</h4>
+            <button onClick={signupHandler}>Sign Up</button>
+            {
+              login &&
+              <div className='overlay'>
+                <div className='login-container'>
+                <button className='modal-close' onClick={modalCloseHandler}>X</button>
+                <h1>Login</h1>
+                  <div className='input-section'>
+                    <div><input type="text" placeholder='Enter your email' value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
+                    <div><input type="text" placeholder='Enter your password' value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
+                    {/* <div><button className='register-btn' onClick={registerHandle}>CONTINUE</button></div> */}
+                  </div>
+                </div>
+              </div>
+            }
+            {
+              signup &&
+              <div className='overlay'>
+                <div className='signup-container'>
+                <button className='modal-close' onClick={modalCloseHandler}>X</button>
+                <h1>Sign Up</h1>
+                <div className='input-section'>
+                  <div><input type="text" placeholder='Enter your name' value={name} onChange={(e) => {setName(e.target.value)}}/></div>
+                  <div><input type="number" placeholder='Enter your mobile number' value={mobile} onChange={(e) => {setMobile(e.target.value)}}/></div>
+                  <div><input type="email" placeholder='Enter your email' value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
+                  <div><input type="password" placeholder='Enter your password' value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
+                  <div><button className='register-btn' onClick={registerHandle}>CONTINUE</button></div>
+                </div>
+              </div>
+              </div>
+            }
           </div>
           <div className='cart-section'>
             <h4>Offers</h4>
