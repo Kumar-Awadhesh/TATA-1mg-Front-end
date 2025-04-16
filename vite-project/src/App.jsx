@@ -21,6 +21,7 @@ function App() {
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signupMsg, setSignupMsg] = useState(false);
 
   const images= [
     "/nycil.jpeg",
@@ -60,7 +61,7 @@ function App() {
   ]
 
   useEffect(() => {
-    if(signup || login){
+    if(signup || login || signupMsg){
       document.body.style.overflow = "hidden";
     }
     else{
@@ -69,7 +70,7 @@ function App() {
     return () => {
       document.body.style.overflow = "auto";
     }
-  },[signup, login])
+  },[signup, login, signupMsg])
 
   const loginHandler = () => {
     setLogin(true);
@@ -84,6 +85,7 @@ function App() {
   const modalCloseHandler = () => {
     setSignup(false);
     setLogin(false);
+    setSignupMsg(false);
     setName("");
     setMobile("");
     setEmail("");
@@ -100,11 +102,22 @@ function App() {
 
     axios.post("https://tata-1mg-4rty.onrender.com/user/registerUser", register)
     .then((res) => {
-      console.log("User Register Successfully!:", res.data)
+      if(!res.ok){
+        console.log(res.data.msg)
+      }
+      else{
+        console.log(res.data.msg)
+      }
+      setSignup(false);
+      setSignupMsg(true);
     })
     .catch((err) => {
-      console.log(err)
+      console.log({msg: 'catch error', err})
     })
+    setName("");
+    setMobile("");
+    setEmail("");
+    setPassword("");
   }
 
 
@@ -223,8 +236,8 @@ function App() {
                 <button className='modal-close' onClick={modalCloseHandler}>X</button>
                 <h1>Login</h1>
                   <div className='input-section'>
-                    <div><input type="text" placeholder='Enter your email' value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
-                    <div><input type="text" placeholder='Enter your password' value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
+                    <div><input type="text" placeholder='Enter your email' required value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
+                    <div><input type="text" placeholder='Enter your password' required value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
                     {/* <div><button className='register-btn' onClick={registerHandle}>CONTINUE</button></div> */}
                   </div>
                 </div>
@@ -234,16 +247,32 @@ function App() {
               signup &&
               <div className='overlay'>
                 <div className='signup-container'>
-                <button className='modal-close' onClick={modalCloseHandler}>X</button>
-                <h1>Sign Up</h1>
-                <div className='input-section'>
-                  <div><input type="text" placeholder='Enter your name' value={name} onChange={(e) => {setName(e.target.value)}}/></div>
-                  <div><input type="number" placeholder='Enter your mobile number' value={mobile} onChange={(e) => {setMobile(e.target.value)}}/></div>
-                  <div><input type="email" placeholder='Enter your email' value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
-                  <div><input type="password" placeholder='Enter your password' value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
-                  <div><button className='register-btn' onClick={registerHandle}>CONTINUE</button></div>
+                <div className='signup-img-container'>
+                  <img src="images/Your-Go-To-Health-App.png" alt="health-app-icon" />
+                  <h1>Make Healthcare Simpler</h1>
+                  <p>Get medicine information, order medicines, book lab test and consult doctors online from the comfort of your home</p>
                 </div>
+                  <div>
+                    <button className='modal-close' onClick={modalCloseHandler}>X</button>
+                    <h1>Sign Up</h1>
+                    <div className='input-section'>
+                      <div><input type="text" placeholder='Enter your name' required value={name} onChange={(e) => {setName(e.target.value)}}/></div>
+                      <div><input type="number" placeholder='Enter your mobile number' required value={mobile} onChange={(e) => {setMobile(e.target.value)}}/></div>
+                      <div><input type="email" placeholder='Enter your email' required value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
+                      <div><input type="password" placeholder='Enter your password' required value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
+                      <div><button className='register-btn' onClick={registerHandle}>CONTINUE</button></div>
+                    </div>
+                  </div>
+               </div>
               </div>
+            }
+            {
+              signupMsg &&
+              <div className='signup-msg-nodal'>
+                <div className='signup-msg-container'>
+                  <h1>User Registered Successfully!</h1>
+                  <button className='signup-modal-close' onClick={modalCloseHandler}>ok</button>
+                </div>
               </div>
             }
           </div>
