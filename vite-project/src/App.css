@@ -69,14 +69,13 @@
 
 .signup-container {
     display: flex;
-    width: 1080px;
-    height: 600px;
+    width: 900px;
+    height: 500px;
     padding: 20px;
     border-radius: 7px;
     text-align: center;
     background-color: white;
     justify-content: space-around;
-    border: 1px solid red;
 }
 
 .signup-img-container{
@@ -87,9 +86,10 @@
 }
 
 .signup-img-container>p{
-    font-size: large;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 400;
     margin-top: 20px;
+    line-height: 1.4;
 }
 
 .signup-img-container>h1{
@@ -97,13 +97,16 @@
 }
 
 .login-container {
-    width: 800px;
+    display: flex;
+    width: 900px;
     height: 500px;
     padding: 20px;
     border-radius: 7px;
     text-align: center;
+    justify-content: space-around;
     background-color: white;
 }
+
 
 .input-section>div>input {
     width: 350px;
@@ -115,9 +118,25 @@
     border-bottom: 2px solid orangered;
 }
 
+.register-btn, .login-btn{
+    width: 350px;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    color: white;
+    margin-top: 30px;
+    background-color: orangered;
+}
+
+.register-btn, .login-btn:hover{
+    cursor: pointer;
+}
+
 .modal-close {
     position: relative;
-    margin-left: 110%;
+    margin-left: 105%;
     background-color: transparent;
     border: none;
     outline: none;
@@ -127,7 +146,7 @@
     cursor: pointer;
 }
 
-.signup-msg-nodal {
+.signup-msg-nodal, .login-msg-nodal {
     display: flex;
     position: fixed;
     top: 0;
@@ -140,7 +159,7 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.signup-msg-container {
+.signup-msg-container, .login-msg-container {
     width: 400px;
     height: 200px;
     position: relative;
@@ -150,18 +169,18 @@
     background-color: white;
 }
 
-.signup-msg-container>h1 {
+.signup-msg-container>h1, .login-msg-container>h1 {
     margin-bottom: 50px;
 }
 
-.signup-msg-container>button {
+.signup-msg-container>button, .login-msg-container>button {
     font-size: larger;
     background-color: transparent;
     border: none;
     outline: none;
 }
 
-.signup-msg-container>button:hover {
+.signup-msg-container>button:hover, .login-msg-container>button:hover {
     cursor: pointer;
 }
 

@@ -22,6 +22,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signupMsg, setSignupMsg] = useState(false);
+  const [loginMsg, setLoginMsg] = useState(false);
 
   const images= [
     "/nycil.jpeg",
@@ -61,7 +62,7 @@ function App() {
   ]
 
   useEffect(() => {
-    if(signup || login || signupMsg){
+    if(signup || login || signupMsg || loginMsg){
       document.body.style.overflow = "hidden";
     }
     else{
@@ -70,7 +71,7 @@ function App() {
     return () => {
       document.body.style.overflow = "auto";
     }
-  },[signup, login, signupMsg])
+  },[signup, login, signupMsg, loginMsg])
 
   const loginHandler = () => {
     setLogin(true);
@@ -90,6 +91,7 @@ function App() {
     setMobile("");
     setEmail("");
     setPassword("");
+    setLoginMsg(false);
   }
 
   const registerHandle = () => {
@@ -100,7 +102,7 @@ function App() {
       password
     };
 
-    axios.post("https://tata-1mg-4rty.onrender.com/user/registerUser", register)
+    axios.post("http://localhost:3000/user/registerUser", register)
     .then((res) => {
       if(!res.ok){
         console.log(res.data.msg)
@@ -112,12 +114,34 @@ function App() {
       setSignupMsg(true);
     })
     .catch((err) => {
-      console.log({msg: 'catch error', err})
+      alert(`required: ${err.config.data}`)
     })
     setName("");
     setMobile("");
     setEmail("");
     setPassword("");
+  }
+
+  const signinHandle = () => {
+    const signin = {
+      email,
+      password
+    };
+
+    axios.post("http://localhost:3000/auth/login", signin)
+    .then((res) => {
+      if(!res.ok){
+        console.log(res.data.msg);
+      }
+      else{
+        console.log(res.data.msg);
+      }
+      setLogin(false)
+      setLoginMsg(true);
+    })
+    .catch((err) => {
+      alert(err.response.data);
+    })
   }
 
 
@@ -233,12 +257,19 @@ function App() {
               login &&
               <div className='overlay'>
                 <div className='login-container'>
-                <button className='modal-close' onClick={modalCloseHandler}>X</button>
-                <h1>Login</h1>
-                  <div className='input-section'>
-                    <div><input type="text" placeholder='Enter your email' required value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
-                    <div><input type="text" placeholder='Enter your password' required value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
-                    {/* <div><button className='register-btn' onClick={registerHandle}>CONTINUE</button></div> */}
+                  <div className='signup-img-container'>
+                    <img src="images/Your-Go-To-Health-App.png" alt="health-app-icon" />
+                    <h1>Make Healthcare Simpler</h1>
+                    <p>Get medicine information, order medicines, book lab test and consult doctors online from the comfort of your home</p>
+                  </div>
+                  <div>
+                    <button className='modal-close' onClick={modalCloseHandler}>X</button>
+                    <h1>Login</h1>
+                    <div className='input-section'>
+                      <div><input type="text" placeholder='Enter your email' required value={email} onChange={(e) => {setEmail(e.target.value)}}/></div>
+                      <div><input type="text" placeholder='Enter your password' required value={password} onChange={(e) => {setPassword(e.target.value)}}/></div>
+                      <div><button className='login-btn' onClick={signinHandle}>LOGIN</button></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -272,6 +303,15 @@ function App() {
                 <div className='signup-msg-container'>
                   <h1>User Registered Successfully!</h1>
                   <button className='signup-modal-close' onClick={modalCloseHandler}>ok</button>
+                </div>
+              </div>
+            }
+            {
+              loginMsg &&
+              <div className='login-msg-nodal'>
+                <div className='login-msg-container'>
+                  <h1>Login Successfully!</h1>
+                  <button className='login-modal-close' onClick={modalCloseHandler}>ok</button>
                 </div>
               </div>
             }
