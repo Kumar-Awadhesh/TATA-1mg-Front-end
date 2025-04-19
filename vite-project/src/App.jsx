@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import {jwtDecode} from "jwt-decode";
 import './App.css'
 
 
@@ -23,6 +24,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [signupMsg, setSignupMsg] = useState(false);
   const [loginMsg, setLoginMsg] = useState(false);
+  const [cart, setCart] = useState(false);
 
   const images= [
     "/nycil.jpeg",
@@ -130,20 +132,40 @@ function App() {
 
     axios.post("http://localhost:3000/auth/login", signin)
     .then((res) => {
-      if(!res.ok){
-        console.log(res.data.msg);
-      }
-      else{
-        console.log(res.data.msg);
-      }
-      setLogin(false)
+      const {msg, token} = res.data;
+      localStorage.setItem("token", token)
+      console.log(msg);
+      setLogin(false);
       setLoginMsg(true);
+      setCart(true);
     })
     .catch((err) => {
-      alert(err.response.data);
+      console.log(err)
+      alert(err.response.data.msg);
     })
   }
 
+  useEffect(() => {
+    const getToken = localStorage.getItem("token");
+    try {
+      if(getToken){
+        const verify = jwtDecode(getToken);
+        const validity = Date.now()/1000;
+        
+        if(verify.exp > validity){
+          setLogin(false)
+          setCart(true);
+        }
+        else{
+          localStorage.removeItem("token");
+          setCart(false);
+          setLogin(false);
+        }
+      }
+    } catch (err) {
+      console.log("token expired", err)
+    }
+  },[])
 
   const healthHandleEnter = () => {
     setHealth(true);
@@ -318,7 +340,10 @@ function App() {
           </div>
           <div className='cart-section'>
             <h4>Offers</h4>
-            <img src="" alt="" />
+            {
+              cart &&
+              <button><img src="images/cart-icon.png" alt="cart-icon" /></button>
+            }
             <h4>Need Help?</h4>
           </div>
         </nav>

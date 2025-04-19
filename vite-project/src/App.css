@@ -107,7 +107,6 @@
     background-color: white;
 }
 
-
 .input-section>div>input {
     width: 350px;
     height: 30px;
@@ -192,6 +191,21 @@
     margin-right: 15px;
     color: rgb(116, 116, 116);
 
+}
+
+.cart-section>button{
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.cart-section>button:hover{
+    cursor: pointer;
+}
+
+.cart-section>button>img{
+    width: 20px;
 }
 
 .logo-section>h3:hover {
