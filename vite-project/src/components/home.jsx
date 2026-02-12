@@ -5,8 +5,7 @@ import '../App.css'
 
 
 const Home = () => {
-  const [showHealth, setHealth] = useState(false);
-  const [showVitamin, setVitamin] = useState(false);
+  
   const [showNutrition, setNutrition] = useState(false);
   const [showWellness, setWellness] = useState(false);
   const [showStomach, setStomach] = useState(false);
@@ -16,18 +15,7 @@ const Home = () => {
   const [showImmunity, setImmunity] = useState(false);
   const [showIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
-  const [login, setLogin] = useState(false);
-  const [signup, setSignup] = useState(false);
-  const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [signupMsg, setSignupMsg] = useState(false);
-  const [loginMsg, setLoginMsg] = useState(false);
-  const [cart, setCart] = useState(false);
-  const [profile, setProfile] = useState(false);
-  const [authBtn, setAuthBtn] = useState(true);
-  const [profileContainer, setProfileContainer] = useState(false);
+  
 
   const images= [
     "/nycil.jpeg",
@@ -66,140 +54,8 @@ const Home = () => {
     {src: "/images/personal-care7.avif"}
   ]
 
-  useEffect(() => {
-    if(signup || login || signupMsg || loginMsg){
-      document.body.style.overflow = "hidden";
-    }
-    else{
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    }
-  },[signup, login, signupMsg, loginMsg])
+  
 
-  const loginHandler = () => {
-    setLogin(true);
-    setSignup(false);
-  }
-
-  const signupHandler = () => {
-    setSignup(true);
-    setLogin(false);
-  }
-
-  const modalCloseHandler = () => {
-    setSignup(false);
-    setLogin(false);
-    setSignupMsg(false);
-    setName("");
-    setMobile("");
-    setEmail("");
-    setPassword("");
-    setLoginMsg(false);
-  }
-
-  const registerHandle = () => {
-    const register = {
-      name,
-      mobile,
-      email,
-      password
-    };
-
-    axios.post("https://tata-1mg-4rty.onrender.com/user/registerUser", register)
-    .then((res) => {
-      if(!res.ok){
-        console.log(res.data.msg);
-        alert(res.data.msg);
-      }
-      else{
-        console.log(res.data.msg.message);
-      }
-      setSignup(false);
-      setSignupMsg(true);
-    })
-    .catch((err) => {
-      alert(`required: ${err.config.data}`)
-    })
-    setName("");
-    setMobile("");
-    setEmail("");
-    setPassword("");
-  }
-
-  const signinHandle = () => {
-    const signin = {
-      email,
-      password
-    };
-
-    axios.post("https://tata-1mg-4rty.onrender.com/auth/login", signin)
-    .then((res) => {
-      const {msg, token} = res.data;
-      localStorage.setItem("token", token)
-      console.log(msg);
-      setLogin(false);
-      setLoginMsg(true);
-      setCart(true);
-      setProfile(true);
-      setAuthBtn(false);
-    })
-    .catch((err) => {
-      console.log(err)
-      alert(err.message);
-    })
-  }
-
-  const profileEnterHandle = () => {
-    setProfileContainer(true);
-  }
-
-  const profileLeaveHandle = () => {
-    setProfileContainer(false);
-  }
-
-  const profileContentEnterHandle = () => {
-    setProfileContainer(true);
-  }
-
-  const profileContentLeaveHandle = () => {
-    setProfileContainer(false);
-  }
-
-  useEffect(() => {
-    const getToken = localStorage.getItem("token");
-    try {
-      if(getToken){
-        const verify = jwtDecode(getToken);
-        const validity = Date.now()/1000;
-        
-        if(verify.exp > validity){
-          setLogin(false)
-          setCart(true);
-          setProfile(true);
-          setAuthBtn(false);
-        }
-        else{
-          localStorage.removeItem("token");
-          setCart(false);
-          setLogin(false);
-          setProfile(false);
-          setAuthBtn(true);
-        }
-      }
-    } catch (err) {
-      console.log("token expired", err)
-    }
-  },[])
-
-  const healthHandleEnter = () => {
-    setHealth(true);
-  }
-
-  const healthHandleLeave = () => {
-    setHealth(false);
-  }
 
   const vitaminHandleEnter = () => {
     setVitamin(true);
@@ -292,7 +148,7 @@ const Home = () => {
   return (
     <>
       <div className='container'>
-        <nav className='navbar'>
+        {/* <nav className='navbar'>
           <div className='logo-section'>
             <img className='mgLogo' src="images/tata_1mg_logo.svg" alt="tata_1mg_logo" />
             <h3>MEDICINES</h3>
@@ -398,8 +254,8 @@ const Home = () => {
             }
             <h4>Need Help?</h4>
           </div>
-        </nav>
-        <div className='search-section'>
+        </nav> */}
+        {/* <div className='search-section'>
           <div className='location'>
             <div className='map-icon-containe'>
               <img className='map-icon' src="images/map-icon.png" alt="map-icon" />
@@ -438,10 +294,10 @@ const Home = () => {
             <p>QUICK BUY! Get up to 25% off on medicines</p>
             <button className='quick-order-btn'>Quick order</button>
           </div>
-        </div>
+        </div> */}
         <div className='product-nodal-container'>
           <div className='product-section'>
-            <div>
+            {/* <div>
               <button onMouseOver={healthHandleEnter} onMouseLeave={healthHandleLeave} className='health-btn nodal-btn'>Health Resource Center <b>⌄</b></button>
                 {
                 showHealth && 
@@ -453,8 +309,8 @@ const Home = () => {
                   </div>
                 </div>
                 }
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
                 <button onMouseOver={vitaminHandleEnter} onMouseLeave={vitaminHandleLeave} className='vitamin-btn nodal-btn'>Vitamins & Nutrition <b>⌄</b></button>
                   {
                     showVitamin && 
@@ -493,7 +349,7 @@ const Home = () => {
                       </div>
                     </div>
                   }
-              </div>
+              </div> */}
 
             <div>
               <button onMouseOver={nutritionHandleEnter} onMouseLeave={nutritionHandleLeave} className='nutrition-btn nodal-btn'>Nutritional Drinks <b>⌄</b></button>
