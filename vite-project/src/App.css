@@ -780,3 +780,23 @@
 .secure-section>div>div>img {
     width: 60px;
 }
+
+.productInfo-container>div>img{
+    width: 150px;
+    height: 300px;
+}
+
+.productInfo-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.productInfo-container>div:last-child{
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px 10px 0 10px;
+}

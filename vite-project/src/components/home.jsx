@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import {jwtDecode} from "jwt-decode";
+import {jwtDecode, } from "jwt-decode";
+import { useNavigate } from 'react-router-dom';
 import '../App.css'
 
 
@@ -15,6 +16,7 @@ const Home = () => {
   const [showImmunity, setImmunity] = useState(false);
   const [showIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   
 
   const images= [
@@ -140,8 +142,8 @@ const Home = () => {
   },[])
 
 
-  const savingDealHandle = (id) => {
-    alert(id)
+  const savingDealHandle = (productId) => {
+    navigate(`/product_info?productId=${productId}`)
   }
 
 
