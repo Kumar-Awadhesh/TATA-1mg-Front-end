@@ -146,6 +146,18 @@ const Home = () => {
     navigate(`/product_info?productId=${productId}`)
   }
 
+  const trendingHandle = (productId) => {
+    navigate(`/product_info?productId=${productId}`)
+  }
+
+  const skinCareHandle = (productId) => {
+    navigate(`/product_info?productId=${productId}`)
+  } 
+
+  const popularHaldle = (productId) => {
+    navigate(`/product_info?productId=${productId}`)
+  }
+
 
   return (
     <>
@@ -374,7 +386,7 @@ const Home = () => {
                 {data
                 .filter((item) => item.category === "trending")
                 .map((item, index) => (
-                  <div className='product-deals' key={index}>
+                  <div className='product-deals' key={item._id} onClick={(e)=>trendingHandle(item._id)}>
                     <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
@@ -389,7 +401,7 @@ const Home = () => {
                 {data
                 .filter((item) => item.category === "skin_care")
                 .map((item, index) => (
-                  <div className='product-deals' key={index}>
+                  <div className='product-deals' key={item._id} onClick={(e)=>skinCareHandle(item._id)}>
                     <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
@@ -404,7 +416,7 @@ const Home = () => {
                 {data
                 .filter((item) => item.category === "combo_deal")
                 .map((item, index) => (
-                  <div className='product-deals' key={index}>
+                  <div className='product-deals' key={item._id} onClick={(e)=>popularHaldle(item._id)}>
                     <img src={`https://tata-1mg-4rty.onrender.com${item.image}`} alt={item.title} />
                     <p>{item.title}</p>
                     <p>{item.description}</p>
