@@ -158,6 +158,14 @@ const Home = () => {
     navigate(`/product_info?productId=${productId}`)
   }
 
+  const testHandle = (productId) => {
+    navigate(`/product_info?productId=${productId}`)
+  }
+
+  const personalCareHandle = (productId) => {
+    navigate(`/product_info?productId?=${productId}`)
+  }
+
 
   return (
     <>
@@ -345,7 +353,7 @@ const Home = () => {
           <div>
             <div>
                 {personl_care.map((item, index) => (
-                        <div className='product-item' key={index}>
+                        <div className='product-item' key={item._id} onClick={(e)=>personalCareHandle(item._id)}>
                           <img className='product-img' src={item.src} alt={item.name}></img>
                         </div>
                       ))}
@@ -357,7 +365,7 @@ const Home = () => {
                 {data
                 .filter((item) => item.category === "test")
                 .map((item, index) => (
-                  <div className='product-data' key={index}>
+                  <div className='product-data' key={item._id} onClick={(e)=>testHandle(item._id)}>
                     <h4>{item.title}</h4>
                     <p>{`रु${item.price}`}</p>
                   </div>
