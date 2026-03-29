@@ -49,6 +49,19 @@ const ProductInfo = () => {
                             <div>
                                 <h2>रु {data.price}</h2>
                                 <p>Inclusive of all taxes</p>
+                                <select className="cart-option" id="">
+                                    <option value="1">1 Bottle</option>
+                                    <option value="2">2 Bottle</option>
+                                    <option value="3">3 Bottle</option>
+                                    <option value="4">4 Bottle</option>
+                                    <option value="5">5 Bottle</option>
+                                    <option value="6">6 Bottle</option>
+                                    <option value="7">7 Bottle</option>
+                                    <option value="8">8 Bottle</option>
+                                    <option value="9">9 Bottle</option>
+                                    <option value="10">10 Bottle</option>
+                                </select>
+                                <button className="add-cart">Add to cart</button>
                                 <p>
                                     The price displayed is the MRP (inclusive of applicable taxes). 
                                     Any additional fee (such as shipping fee, handling and/or platform fee etc.) 

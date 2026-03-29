@@ -103,8 +103,7 @@ const Navbar = () => {
                 setAuthBtn(false);
             })
             .catch((err) => {
-                console.log(err)
-                alert(err.message);
+                alert(err.response?.data.msg);
             })
     }
 
@@ -190,6 +189,7 @@ const Navbar = () => {
                                 <p>|</p>
                                 <button onClick={signupHandler}>Sign Up</button>
                             </div>
+                            
                         }
                         {
                             login &&
