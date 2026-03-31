@@ -205,7 +205,7 @@ const Navbar = () => {
                                         <h1>Login</h1>
                                         <div className='input-section'>
                                             <div><input type="text" placeholder='Enter your email' required value={email} onChange={(e) => { setEmail(e.target.value) }} /></div>
-                                            <div><input type="text" placeholder='Enter your password' required value={password} onChange={(e) => { setPassword(e.target.value) }} /></div>
+                                            <div><input type="password" placeholder='Enter your password' required value={password} onChange={(e) => { setPassword(e.target.value) }} /></div>
                                             <div><button className='login-btn' onClick={signinHandle}>LOGIN</button></div>
                                         </div>
                                     </div>
